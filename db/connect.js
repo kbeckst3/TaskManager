@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
 
-const connectString = 'mongodb+srv://Keller:Amelia4Me@nodeexpressprojects.b41fg.mongodb.net/NodeExpressProjects?retryWrites=true&w=majority'
+const connectDB = (url) => {
+  return  mongoose.connect(url, {
+        useNewUrlParser: true, 
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useFindAndModify: false,
+    })
+}
 
-mongoose.connect(connectString, {useNewUrlParser: true, useUnifiedTopology: true})
-.then(() => console.log('Connected to the database'))
-.catch((err) => console.log(err))
+module.exports = connectDB;
